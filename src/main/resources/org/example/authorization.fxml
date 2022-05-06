@@ -9,8 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="420.0" prefWidth="540.0" style="-fx-background-color: #F0FFF0;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.AuthAndRegController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="420.0" prefWidth="540.0" style="-fx-background-color: #F0FFF0;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.AuthorizationController">
    <children>
       <AnchorPane layoutX="1.0" prefHeight="76.0" prefWidth="540.0" style="-fx-background-color: #E6E6FA;">
          <children>
@@ -26,7 +25,7 @@
             </ImageView>
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="24.0" layoutY="89.0" prefHeight="300.0" prefWidth="227.0" style="-fx-background-color: #E6E6FA;">
+      <AnchorPane layoutX="157.0" layoutY="90.0" prefHeight="300.0" prefWidth="227.0" style="-fx-background-color: #E6E6FA;">
          <children>
             <Label alignment="TOP_CENTER" layoutX="7.0" prefHeight="59.0" prefWidth="213.0" text="welcome back!">
                <font>
@@ -40,20 +39,7 @@
                   <Font size="15.0" />
                </font>
             </Button>
-         </children>
-      </AnchorPane>
-      <AnchorPane layoutX="287.0" layoutY="89.0" prefHeight="300.0" prefWidth="227.0" style="-fx-background-color: #E6E6FA;">
-         <children>
-            <Label alignment="TOP_CENTER" layoutX="12.0" prefHeight="59.0" prefWidth="213.0" text="create account">
-               <font>
-                  <Font name="Times New Roman Bold" size="32.0" />
-               </font>
-            </Label>
-            <TextField fx:id="fieldEmailAddressSignUp" layoutX="44.0" layoutY="92.0" promptText="email@mail.ru" />
-            <PasswordField fx:id="fieldPasswordSignUp" layoutX="44.0" layoutY="126.0" promptText="password" />
-            <PasswordField fx:id="fieldRepeatPasswordSignUp" layoutX="44.0" layoutY="157.0" promptText="repeat the password" />
-            <TextField fx:id="fieldNameSignUp" layoutX="44.0" layoutY="59.0" promptText="your name" />
-            <Button fx:id="buttonSignUp" layoutX="67.0" layoutY="197.0" mnemonicParsing="false" onAction="#switchToPrimary" prefHeight="25.0" prefWidth="94.0" style="-fx-background-color: #B0C4DE;" text="sign up">
+            <Button fx:id="buttonRegistration" layoutX="67.0" layoutY="180.0" mnemonicParsing="false" onAction="#switchToRegistration" prefHeight="25.0" prefWidth="94.0" style="-fx-background-color: #B0C4DE;" text="register">
                <font>
                   <Font size="15.0" />
                </font>

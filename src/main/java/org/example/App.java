@@ -17,7 +17,7 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        scene = new Scene(loadFXML("authAndReg"), 540, 420);
+        scene = new Scene(loadFXML("authorization"), 540, 420);
         stage.setScene(scene);
         stage.setTitle("Network Chat");
         stage.setResizable(false);
