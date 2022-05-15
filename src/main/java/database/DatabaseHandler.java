@@ -1,8 +1,11 @@
 package database;
+
     import java.sql.Connection;
     import java.sql.DriverManager;
     import java.sql.PreparedStatement;
     import java.sql.SQLException;
+    import java.sql.ResultSet;
+
 public class DatabaseHandler extends Configs {
     Connection connection;
 
@@ -30,5 +33,26 @@ public class DatabaseHandler extends Configs {
         } catch (SQLException | ClassNotFoundException throwables) {
             throwables.printStackTrace();
         }
+    }
+
+
+    public ResultSet signInUser(User user){
+        ResultSet resultSet = null;
+
+        String select = "SELECT * FROM "+Constant.USER_TABLE+" WHERE "+Constant.USER_NAME +"=? AND "+Constant.USER_PASSWORD+"=?";
+
+        try{
+            PreparedStatement preparedStatement = getDatabaseConnection().prepareStatement(select);
+            preparedStatement.setString(1, user.getEmail());
+            preparedStatement.setString(2, user.getPassword());
+
+            resultSet = preparedStatement.executeQuery();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        return resultSet;
     }
 }

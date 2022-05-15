@@ -2,12 +2,16 @@ package org.example;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 import database.DatabaseHandler;
+import database.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
@@ -32,6 +36,10 @@ public class AuthorizationController {
     private PasswordField fieldPasswordSignIn;
 
     @FXML
+    private Label labelError;
+
+
+    @FXML
     void switchToPrimary() {
         try {
             App.setRoot("primary");
@@ -52,14 +60,12 @@ public class AuthorizationController {
     @FXML
     void initialize() {
         switchToReg();
-        switchToChat();
+        processAuthorization();
 
     }
 
     public void switchToChat(){
         buttonSignIn.setOnAction(event -> {
-            buttonSignIn.getScene().getWindow().hide();
-
               switchToPrimary();
         });
     }
@@ -75,21 +81,40 @@ public class AuthorizationController {
 
         buttonSignIn.setOnAction(event -> {
 
-
             String email = fieldEmailAddressSignIn.getText().trim();
             String password = fieldPasswordSignIn.getText().trim();
 
             if (!email.equals("") && !password.equals("")){
-                loginUser(email, password);
-            } else
-                System.out.println("login or/and password is empty");
+                try {
+                    loginUser(email, password);
+                } catch (SQLException throwables) {
+                    throwables.printStackTrace();
+                }
+            } else if (email.equals("") && password.equals("")) {
+                labelError.setOpacity(1);
+                labelError.setText("login or/and password \n is empty");
+            }
         });
     }
 
-    private void loginUser(String email, String password) {
+    private void loginUser(String email, String password) throws SQLException {
+        DatabaseHandler databaseHandler = new DatabaseHandler();
+        User user = new User();
+        user.setEmail(email);
+        user.setPassword(password);
+        ResultSet resultSet = databaseHandler.signInUser(user);
+
+        int counter = 0;
+
+        while (resultSet.next()){
+            counter++;
+        } if (counter >=1 ){
+            System.out.println("user authorized");
+            switchToChat();
+        } else if (!resultSet.next()){
+            labelError.setOpacity(1);
+        }
     }
-
-
 }
 
 

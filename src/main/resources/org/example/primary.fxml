@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="420.0" prefWidth="540.0" style="-fx-background-color: #F0FFF0;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.PrimaryController">
+<AnchorPane fx:id="background" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="420.0" prefWidth="540.0" style="-fx-background-color: #F0FFF0;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.PrimaryController">
    <children>
       <AnchorPane layoutX="1.0" prefHeight="76.0" prefWidth="540.0" style="-fx-background-color: #E6E6FA;">
          <children>
@@ -36,22 +36,22 @@
       </Button>
       <MenuButton fx:id="menu" layoutX="418.0" layoutY="87.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="107.0" style="-fx-background-color: #E6E6FA;" text="menu">
         <items>
-          <MenuItem mnemonicParsing="false" text="Action 1" />
-          <MenuItem mnemonicParsing="false" text="Action 2" />
+          <MenuItem fx:id="buttonAdminVersion" mnemonicParsing="false" text="admin version" />
+          <MenuItem fx:id="buttonHelp" mnemonicParsing="false" text="help" />
         </items>
          <font>
             <Font size="18.0" />
          </font>
       </MenuButton>
-      <Button fx:id="buttonBack" focusTraversable="false" layoutX="417.0" layoutY="210.0" mnemonicParsing="false" onAction="#switchToAuthAndReg" prefHeight="39.0" prefWidth="107.0" style="-fx-background-color: #E6E6FA;" text="back">
+      <Button fx:id="buttonBack" focusTraversable="false" layoutX="417.0" layoutY="210.0" mnemonicParsing="false" onAction="#switchToAuthorization" prefHeight="39.0" prefWidth="107.0" style="-fx-background-color: #E6E6FA;" text="back">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
       <MenuButton fx:id="settings" layoutX="418.0" layoutY="152.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="107.0" style="-fx-background-color: #E6E6FA;" text="settings">
          <items>
-            <MenuItem mnemonicParsing="false" text="Action 1" />
-            <MenuItem mnemonicParsing="false" text="Action 2" />
+            <MenuItem fx:id="buttonDarkTheme" mnemonicParsing="false" text="dark theme" />
+            <MenuItem fx:id="buttonRussianLanguage" mnemonicParsing="false" text="russian language" />
          </items>
          <font>
             <Font size="17.0" />
