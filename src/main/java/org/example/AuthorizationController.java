@@ -6,9 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
-import database.DatabaseHandler;
+import database.DatabaseManager;
 import database.User;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -38,6 +37,14 @@ public class AuthorizationController {
     @FXML
     private Label labelError;
 
+    @FXML
+    void initialize() {
+        switchToReg();
+
+        buttonSignIn.setOnAction(event -> {
+            processAuthorization();
+        });
+    }
 
     @FXML
     void switchToPrimary() {
@@ -57,18 +64,6 @@ public class AuthorizationController {
         }
     }
 
-    @FXML
-    void initialize() {
-        switchToReg();
-        processAuthorization();
-
-    }
-
-    public void switchToChat(){
-        buttonSignIn.setOnAction(event -> {
-              switchToPrimary();
-        });
-    }
 
     public void switchToReg(){
         buttonRegistration.setOnAction(event -> {
@@ -77,12 +72,9 @@ public class AuthorizationController {
     }
 
     public void processAuthorization(){
-            DatabaseHandler databaseHandler = new DatabaseHandler();
-
-        buttonSignIn.setOnAction(event -> {
-
             String email = fieldEmailAddressSignIn.getText().trim();
             String password = fieldPasswordSignIn.getText().trim();
+
 
             if (!email.equals("") && !password.equals("")){
                 try {
@@ -94,15 +86,16 @@ public class AuthorizationController {
                 labelError.setOpacity(1);
                 labelError.setText("login or/and password \n is empty");
             }
-        });
+
     }
 
-    private void loginUser(String email, String password) throws SQLException {
-        DatabaseHandler databaseHandler = new DatabaseHandler();
+    private void loginUser(String name, String password) throws SQLException {
+        DatabaseManager databaseHandler = new DatabaseManager();
         User user = new User();
-        user.setEmail(email);
+        user.setName(name);
         user.setPassword(password);
         ResultSet resultSet = databaseHandler.signInUser(user);
+
 
         int counter = 0;
 
@@ -110,7 +103,7 @@ public class AuthorizationController {
             counter++;
         } if (counter >=1 ){
             System.out.println("user authorized");
-            switchToChat();
+            switchToPrimary();
         } else if (!resultSet.next()){
             labelError.setOpacity(1);
         }

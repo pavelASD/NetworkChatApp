@@ -72,6 +72,9 @@ public class PrimaryController implements Initializable {
     @FXML
     private AnchorPane header;
 
+    @FXML
+    private Button buttonClear;
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -132,16 +135,7 @@ public class PrimaryController implements Initializable {
                                 }
                         } catch (IOException ioException) {
                             ioException.printStackTrace();
-                       } //   finally {
-//                            try {
-//                                socket.close();
-//                                inMessage.close();
-//                                outMessage.close();
-//                            } catch (IOException e) {
-//                                e.printStackTrace();
-//                            }
-//
-//                        }
+                       }
                     }
                 }
             }).start();
@@ -151,6 +145,10 @@ public class PrimaryController implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        buttonClear.setOnAction(event -> {
+            textShow.clear();
+        });
     }
 
     @FXML
