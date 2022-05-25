@@ -1,16 +1,61 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Button?>
-<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.PrimaryController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="420.0" prefWidth="540.0" style="-fx-background-color: #F0FFF0;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.PrimaryController">
    <children>
-      <Label text="Primary View" />
-      <Button fx:id="primaryButton" text="Switch to Secondary View" onAction="#switchToSecondary"/>
+      <AnchorPane layoutX="1.0" prefHeight="76.0" prefWidth="540.0" style="-fx-background-color: #E6E6FA;">
+         <children>
+            <Label layoutX="97.0" layoutY="8.0" text="Network Chat">
+               <font>
+                  <Font name="Times New Roman" size="53.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="46.0" fitWidth="57.0" layoutX="410.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../img/chatIcon.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <TextArea fx:id="textShow" layoutX="14.0" layoutY="87.0" prefHeight="267.0" prefWidth="388.0" />
+      <TextField fx:id="enterText" layoutX="14.0" layoutY="363.0" prefHeight="39.0" prefWidth="283.0" promptText="enter text..." />
+      <Button fx:id="buttonSend" focusTraversable="false" layoutX="313.0" layoutY="363.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="90.0" style="-fx-background-color: #E6E6FA;" text="send">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <MenuButton fx:id="menu" layoutX="418.0" layoutY="87.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="107.0" style="-fx-background-color: #E6E6FA;" text="menu">
+        <items>
+          <MenuItem mnemonicParsing="false" text="Action 1" />
+          <MenuItem mnemonicParsing="false" text="Action 2" />
+        </items>
+         <font>
+            <Font size="18.0" />
+         </font>
+      </MenuButton>
+      <Button fx:id="buttonBack" focusTraversable="false" layoutX="417.0" layoutY="210.0" mnemonicParsing="false" onAction="#switchToAuthAndReg" prefHeight="39.0" prefWidth="107.0" style="-fx-background-color: #E6E6FA;" text="back">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <MenuButton fx:id="settings" layoutX="418.0" layoutY="152.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="107.0" style="-fx-background-color: #E6E6FA;" text="settings">
+         <items>
+            <MenuItem mnemonicParsing="false" text="Action 1" />
+            <MenuItem mnemonicParsing="false" text="Action 2" />
+         </items>
+         <font>
+            <Font size="17.0" />
+         </font>
+      </MenuButton>
    </children>
-   <padding>
-      <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-   </padding>
-</VBox>
+</AnchorPane>
