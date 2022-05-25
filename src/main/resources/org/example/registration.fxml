@@ -41,6 +41,11 @@
                         <Font size="15.0" />
                     </font>
                 </Button>
+            <Label fx:id="labelError" layoutX="44.0" layoutY="242.0" opacity="0.0" prefHeight="25.0" prefWidth="149.0" text="passwords don't match*" textFill="RED">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
             </children>
         </AnchorPane>
     </children>

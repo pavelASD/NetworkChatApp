@@ -2,6 +2,7 @@ package org.example;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.ResultSet;
 import java.util.ResourceBundle;
 
 import database.DatabaseHandler;
@@ -9,6 +10,7 @@ import database.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
@@ -36,6 +38,9 @@ public class RegistrationController {
     private PasswordField fieldRepeatPasswordSignUp;
 
     @FXML
+    private Label labelError;
+
+    @FXML
     void switchToPrimary() {
         try {
             App.setRoot("primary");
@@ -50,44 +55,37 @@ public class RegistrationController {
 
     }
 
-    public void switchToChat(){
+    public void switchToChat() {
         buttonSignUp.setOnAction(event -> {
             switchToPrimary();
         });
     }
 
-    public void processRegistration(){
+    public void processRegistration() {
 
         buttonSignUp.setOnAction(event -> {
-
             signUpNewUser();
-            switchToChat();
 
         });
     }
 
-
-//            email = fieldEmailAddressSignUp.getText().trim();
-//            password = fieldPasswordSignUp.getText().trim();
-
-//            if (!email.equals("") && !password.equals("")){
-//                loginUser(email, password);
-//            } else
-//                System.out.println("login or/and password is empty");
-
-
     private void signUpNewUser() {
-            DatabaseHandler databaseHandler = new DatabaseHandler();
+        DatabaseHandler databaseHandler = new DatabaseHandler();
 
-            String name = fieldNameSignUp.getText();
-            String email = fieldEmailAddressSignUp.getText();
-            String password = fieldPasswordSignUp.getText();
+        String name = fieldNameSignUp.getText();
+        String email = fieldEmailAddressSignUp.getText();
+        String password = fieldPasswordSignUp.getText();
+        String repeatPassword = fieldRepeatPasswordSignUp.getText();
+
+        if (password == repeatPassword && !password.equals("")) {
 
             User user = new User(name, email, password);
-
             databaseHandler.signUpUser(user);
+
+            switchToChat();
+        }
     }
 
-    private void loginUser(String email, String password) {
+        private void loginUser (String email, String password){
+        }
     }
-}
