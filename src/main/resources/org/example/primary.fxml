@@ -27,7 +27,10 @@
             </ImageView>
          </children>
       </AnchorPane>
-      <TextArea fx:id="textShow" layoutX="14.0" layoutY="87.0" prefHeight="267.0" prefWidth="388.0" />
+      <TextArea fx:id="textShow" layoutX="14.0" layoutY="87.0" prefHeight="267.0" prefWidth="388.0">
+         <font>
+            <Font size="14.0" />
+         </font></TextArea>
       <TextField fx:id="enterText" layoutX="14.0" layoutY="363.0" prefHeight="39.0" prefWidth="283.0" promptText="enter text..." />
       <Button fx:id="buttonSend" focusTraversable="false" layoutX="313.0" layoutY="363.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="90.0" style="-fx-background-color: #E6E6FA;" text="send">
          <font>
@@ -57,5 +60,10 @@
             <Font size="17.0" />
          </font>
       </MenuButton>
+      <Button fx:id="buttonClear" focusTraversable="false" layoutX="418.0" layoutY="261.0" mnemonicParsing="false" onAction="#switchToAuthorization" prefHeight="39.0" prefWidth="107.0" style="-fx-background-color: #E6E6FA;" text="clear">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

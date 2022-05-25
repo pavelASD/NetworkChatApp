@@ -2,19 +2,17 @@ package org.example;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.ResultSet;
 import java.util.ResourceBundle;
 
-import database.DatabaseHandler;
+import database.DatabaseManager;
 import database.User;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
-public class RegistrationController {
+public class RegistrationController implements Initializable {
 
     @FXML
     private ResourceBundle resources;
@@ -37,8 +35,15 @@ public class RegistrationController {
     @FXML
     private PasswordField fieldRepeatPasswordSignUp;
 
-    @FXML
-    private Label labelError;
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        buttonSignUp.setOnAction(event -> {
+                signUpNewUser();
+             switchToPrimary();
+        });
+    }
 
     @FXML
     void switchToPrimary() {
@@ -49,43 +54,14 @@ public class RegistrationController {
         }
     }
 
-    @FXML
-    void initialize() {
-        processRegistration();
-
-    }
-
-    public void switchToChat() {
-        buttonSignUp.setOnAction(event -> {
-            switchToPrimary();
-        });
-    }
-
-    public void processRegistration() {
-
-        buttonSignUp.setOnAction(event -> {
-            signUpNewUser();
-
-        });
-    }
-
     private void signUpNewUser() {
-        DatabaseHandler databaseHandler = new DatabaseHandler();
+        DatabaseManager data = new DatabaseManager();
 
         String name = fieldNameSignUp.getText();
         String email = fieldEmailAddressSignUp.getText();
         String password = fieldPasswordSignUp.getText();
-        String repeatPassword = fieldRepeatPasswordSignUp.getText();
 
-        if (password == repeatPassword && !password.equals("")) {
-
-            User user = new User(name, email, password);
-            databaseHandler.signUpUser(user);
-
-            switchToChat();
-        }
+        User user = new User(name, email, password);
+        data.signUpUser(user);
     }
-
-        private void loginUser (String email, String password){
-        }
-    }
+}
